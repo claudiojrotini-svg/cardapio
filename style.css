@@ -1,0 +1,256 @@
+:root {
+    --primary: #FF5E00; /* Laranja forte, estimula fome */
+    --primary-dark: #cc4a00;
+    --bg-dark: #0f0f11;
+    --bg-panel: #1a1a1d;
+    --text-main: #ffffff;
+    --text-muted: #a0a0a5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    /* Previne que o cliente selecione textos no tablet sem querer */
+    user-select: none; 
+    -webkit-user-select: none;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* --- SIDEBAR (Barra Esquerda) --- */
+.sidebar {
+    width: 250px;
+    background-color: var(--bg-panel);
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    border-right: 1px solid rgba(255,255,255,0.05);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--primary);
+    margin-bottom: 50px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.categories {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.cat-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: left;
+    padding: 15px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cat-btn.active, .cat-btn:active {
+    background-color: rgba(255, 94, 0, 0.1);
+    color: var(--primary);
+}
+
+.cart-summary {
+    background-color: rgba(0,0,0,0.3);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.cart-icon {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.cart-icon span {
+    background: var(--primary);
+    color: white;
+    font-size: 0.9rem;
+    padding: 2px 8px;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+.cart-total {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.btn-checkout {
+    width: 100%;
+    padding: 12px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* --- MAIN CONTENT (Área do Produto) --- */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding: 40px;
+    position: relative;
+}
+
+/* Área do 3D */
+.product-showcase {
+    flex: 1.2;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.glow-effect {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(255, 94, 0, 0.15) 0%, transparent 60%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+model-viewer {
+    width: 100%;
+    height: 80%;
+    outline: none;
+    --poster-color: transparent;
+    cursor: grab;
+}
+
+model-viewer:active {
+    cursor: grabbing;
+}
+
+.swipe-hint {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 10px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+/* Área de Texto */
+.product-details {
+    flex: 1;
+    padding-left: 40px;
+}
+
+.tags {
+    margin-bottom: 15px;
+}
+
+.tag {
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-right: 10px;
+}
+
+.tag-hot { background-color: #e74c3c; color: white; }
+.tag-new { background-color: #f1c40f; color: black; }
+
+h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    font-weight: 900;
+}
+
+h1 span {
+    color: var(--primary);
+}
+
+#product-desc {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.purchase-area {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg-panel);
+    padding: 20px 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.price-container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.currency {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-top: 5px;
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 3.5rem;
+    font-weight: 900;
+}
+
+.btn-add-cart {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+    box-shadow: 0 10px 20px rgba(255, 94, 0, 0.3);
+}
+
+.btn-add-cart:active {
+    transform: scale(0.95);
+    background-color: var(--primary-dark);
+}
+
+.btn-add-cart span {
+    font-size: 1.5rem;
+}

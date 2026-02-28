@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cardápio Digital Interativo</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">🔥 GOURMET</div>
+        <nav class="categories">
+            <button class="cat-btn active" data-id="burger">🍔 Burgers</button>
+            <button class="cat-btn" data-id="fries">🍟 Porções</button>
+            <button class="cat-btn" data-id="coke">🥤 Bebidas</button>
+            <button class="cat-btn" data-id="icecream">🍦 Sobremesas</button>
+        </nav>
+        <div class="cart-summary">
+            <div class="cart-icon">🛒 <span id="cart-count">0</span></div>
+            <div class="cart-total">R$ 0,00</div>
+            <button class="btn-checkout">Finalizar Pedido</button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        
+        <div class="product-showcase">
+            <div class="glow-effect"></div>
+            
+            <model-viewer 
+                id="food-model"
+                src="burger.glb" 
+                alt="Produto 3D"
+                camera-controls
+                auto-rotate
+                rotation-per-second="20deg"
+                shadow-intensity="1.5"
+                shadow-softness="1"
+                exposure="1.2"
+                environment-image="neutral"
+                touch-action="none"
+                interaction-prompt="none"
+                camera-orbit="0deg 75deg 110%">
+            </model-viewer>
+            
+            <div class="swipe-hint">👆 Toque e gire para ver detalhes</div>
+        </div>
+
+        <div class="product-details">
+            <div class="tags" id="product-tags">
+                <span class="tag tag-hot">Mais Pedido</span>
+                <span class="tag tag-new">Lançamento</span>
+            </div>
+            
+            <h1 id="product-name">Double Cheddar <br><span>Bacon Smash</span></h1>
+            <p id="product-desc">Dois suculentos hambúrgueres de costela 150g, duplo queijo cheddar derretido, fatias crocantes de bacon artesanal e maionese defumada no pão brioche.</p>
+            
+            <div class="purchase-area">
+                <div class="price-container">
+                    <span class="currency">R$</span>
+                    <span class="price" id="product-price">42,90</span>
+                </div>
+                
+                <button class="btn-add-cart" onclick="addToCart()">
+                    Adicionar <span>+</span>
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
