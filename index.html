@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Menu Interativo 3D</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="logo">🔥 NØRAN <span>MENU</span></div>
+        <button class="cart-trigger" onclick="toggleCart()">
+            🛒 <span id="cart-badge">0</span>
+        </button>
+    </header>
+
+    <nav class="category-nav">
+        <button class="cat-btn active" data-id="burger">🍔 Burgers</button>
+        <button class="cat-btn" data-id="fries">🍟 Porções</button>
+        <button class="cat-btn" data-id="coke">🥤 Bebidas</button>
+        <button class="cat-btn" data-id="icecream">🍦 Sobremesas</button>
+    </nav>
+
+    <main class="app-main">
+        
+        <div class="model-wrapper">
+            <div class="glow"></div>
+            <model-viewer 
+                id="food-model"
+                src="burger.glb" 
+                camera-controls auto-rotate rotation-per-second="20deg"
+                shadow-intensity="1.2" exposure="1"
+                touch-action="none" interaction-prompt="none">
+            </model-viewer>
+        </div>
+
+        <div class="product-info">
+            <h1 id="product-name">Carregando...</h1>
+            <p id="product-desc">...</p>
+            
+            <div id="options-container" class="options-container"></div>
+            
+            <div class="spacer"></div>
+        </div>
+    </main>
+
+    <div class="bottom-bar">
+        <div class="qty-control">
+            <button onclick="changeQty(-1)">-</button>
+            <span id="item-qty">1</span>
+            <button onclick="changeQty(1)">+</button>
+        </div>
+        <button class="btn-add" onclick="addToCart()">
+            Adicionar • <span id="btn-price">R$ 0,00</span>
+        </button>
+    </div>
+
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-header">
+            <h2>Seu Pedido</h2>
+            <button class="close-btn" onclick="toggleCart()">✕</button>
+        </div>
+        <div id="cart-items" class="cart-items">
+            </div>
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>Total:</span>
+                <span id="cart-total-price">R$ 0,00</span>
+            </div>
+            <button class="btn-checkout">Finalizar Pedido</button>
+        </div>
+    </div>
+    <div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
